@@ -9,7 +9,9 @@ class LoginController extends Controller {
 	public function __construct() {
 
 		$this->dataReturn = [
-			'userName' => 'Queliom Elias de Assis'
+			'pageTitle' => 'Login',
+			'pageScript' => 'login.js',
+			'pageStyles' => 'login.css'
 		];
 
 	}

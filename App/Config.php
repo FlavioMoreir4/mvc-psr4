@@ -14,5 +14,7 @@ class Config extends Environment {
 		(self::ENVIRONMENT == 'development') ? 'root' : 'db_user' ;
 		const DB_PASS =
 		(self::ENVIRONMENT == 'development') ? '' : 'db_pass' ;
+
+		const PATH_VIEWS_TWIG = '/../Views/twig';
 		
 }

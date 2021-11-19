@@ -21,12 +21,4 @@ class HomeController extends Controller {
 
 	}
 
-	public function test($id= null) {
-		if($id) {
-			$this->dataReturn['message'] = 'Hello World! '.$id;
-		}
-		$this->render('home', $this->dataReturn);
-
-	}
-
 }

@@ -2,9 +2,21 @@
 
 namespace App\Core;
 
+use Twig\Loader\FilesystemLoader;
+use Twig\Environment;
+
 use App\Config;
 
 class Controller {
+
+	public function __construct() {
+		try {
+			$this->loader = new FilesystemLoader(Config::PATH_VIEWS_TWIG);
+			$this->twig = new Environment($loader);
+		} catch (Exception $e) {
+			echo "ERROR: ".$e->getMessage();
+		}
+	}
 
 	public function render(
 		string $viewName, 
@@ -27,6 +39,10 @@ class Controller {
 
 		echo str_replace('{{content}}', $view, $template);
 
+	}
+
+	public function renderTwig(string $viewName, array $data = []) {
+		echo $this->twig->render($viewName, $data);
 	}
 
 	private static function renderTemplate(string $layoutName, array $layoutData) {

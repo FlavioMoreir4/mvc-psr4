@@ -7,7 +7,8 @@ use App\Core\Controller;
 class NotFoundController extends Controller {
 
 	public function index() {
-		echo "404";
+		http_response_code(404);
+		echo "<h1>404</h1>";
 	}
 
 }
