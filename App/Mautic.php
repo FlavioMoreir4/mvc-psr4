@@ -10,8 +10,8 @@ class Mautic {
         $settings = array(
             'clientKey'    => '1_pawvmgo29rkscs4sk40swskw0gs8gcgww808wco8okcw0ossw',
             'clientSecret' => '3gk8dng0haww8k4cck48cw0o4sk80wg40s0g84gogww8088gog',
-            'userName'   => 'admin',             // Create a new user       
-            'password'   => 'SHE150298AwDr',             // Make it a secure password
+            'userName'   => 'flavio',             // Create a new user       
+            'password'   => 'Knaks09091919',             // Make it a secure password
         );
         
         // Initiate the auth object specifying to use BasicAuth
