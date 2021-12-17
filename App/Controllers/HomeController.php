@@ -4,20 +4,33 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Models\SampleClass;
+use App\ResponseCode;
 
 class HomeController extends Controller {
 
 	public function __construct() {
 
-		$this->SampleClass = new SampleClass();
+		$this->ResponseCode = ResponseCode::setCode(200);
 
-		$this->dataReturn = [ 'message' => 'Hello World!' ];
+		$this->data = [
+			'dataReturn' => array(
+				"status" => $this->ResponseCode,
+				"data" => array(
+					"message" => "Hello World!"
+				)
+			)			
+		];
 
 	}
 
 	public function index() {
+		$this->render('home', $this->data);
 
-		$this->render('home', $this->dataReturn);
+	}
+
+	public function log($args = null) {
+		$this->data['dataReturn']['data']['message'] = $args;
+		$this->render('home', $this->data);
 
 	}
 

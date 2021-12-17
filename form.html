@@ -1,0 +1,318 @@
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<style>
+    @import url("https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css");
+
+    .is-hidden {
+        display: none !important
+    }
+
+    .direct,
+    .process {
+        text-align: center
+    }
+
+    .load {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        margin: 0 auto
+    }
+
+    .load hr {
+        border: 0;
+        margin: 0;
+        width: 40%;
+        height: 40%;
+        position: absolute;
+        border-radius: 50%;
+        animation: spin 2s ease infinite
+    }
+
+    .load :first-child {
+        background: #993b3b;
+        animation-delay: -1.5s
+    }
+
+    .load :nth-child(2) {
+        background: #993b3b;
+        animation-delay: -1s
+    }
+
+    .load :nth-child(3) {
+        background: #993b3b;
+        animation-delay: -.5s
+    }
+
+    .load :last-child {
+        background: #993b3b
+    }
+
+    @keyframes spin {
+
+        0%,
+        100% {
+            transform: translate(0)
+        }
+
+        25% {
+            transform: translate(160%)
+        }
+
+        50% {
+            transform: translate(160%, 160%)
+        }
+
+        75% {
+            transform: translate(0, 160%)
+        }
+    }
+</style>
+</p>
+<form class="needs-validation" id="form" name="form" novalidate="">
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome Completo" required="">
+        <label for="nome">Nome Completo</label>
+        <div class="invalid-feedback">
+            Insira seu nome completo.
+        </div>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="tel" class="form-control" id="whatsapp" name="whatsapp" placeholder="99 99999-9999" required="">
+        <label for="whatsapp" class="form-label">WhatsApp</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="email" name="email" placeholder="nome@site.com" required="">
+        <label for="email" class="form-label">E-Mail</label>
+    </div>
+    <div class="form-floating mb-3">
+        <select class="form-select" id="interesse" name="interesse" placeholder="Área de Interesse" required="">
+            <option selected="" disabled="" value=""></option>
+            <option value="marinha">Marinha do Brasil</option>
+            <option value="exercito">Exército Brasileiro</option>
+            <option value="aeronautica">Força Aérea Brasileira</option>
+            <option value="auxiliares">Forças Auxiliares</option>
+        </select>
+        <label for="interesse">Selecione uma área de interesse</label>
+        <div class="invalid-feedback">
+            Selecione uma área de interesse.
+        </div>
+    </div>
+
+    <!-- <div class="form-floating mb-3" id="regG">
+        <select class="form-select" id="regiao" name="regiao" placeholder="Unidade" required="">
+            <option selected="" disabled="" value=""></option>
+        </select>
+        <label for="regiao">Selecione uma região</label>
+        <div class="invalid-feedback">
+            Selecione uma unidade.
+        </div>
+    </div> -->
+
+    <div class="d-grid mb-3">
+        <input name="utm_source" type="hidden" id="utm_source" value="Orgânico" class="form-control">
+        <input name="utm_medium" type="hidden" id="utm_medium" value="Orgânico" class="form-control">
+        <input name="utm_campaign" type="hidden" id="utm_campaign" value="Orgânico" class="form-control">
+
+        <input name="franquia" type="hidden" id="franquia" value="IPMIL" data-franquia="16" class="form-control">
+        <input name="origem" type="hidden" id="origem" value="IPMIL" class="form-control">
+        <input name="curso" type="hidden" id="curso" value="16" class="form-control">
+        <input id="facebook_supervisor" name="facebook_supervisor" type="hidden" value="113">
+        <input id="facebook_responsavel" name="facebook_responsavel" type="hidden" value="124">
+        <input id="site" name="site" type="hidden" value="">
+        <input id="site_referrer" name="site_referrer" type="hidden" value="">
+        <button type="submit" name="btnEnviar" class="btn btn-lg btn-success">Confirmar</button>
+
+    </div>
+</form>
+<div class="process is-hidden">
+    <h2 class="text-white fusion-responsive-typography-calculated" data-fontsize="44" data-lineheight="46.2px"
+        style="--fontSize:44; line-height: 1.05;">Processando...</span>
+    </h2>
+    <h3 class="text-white fusion-responsive-typography-calculated" data-fontsize="26" data-lineheight="29.9px"
+        style="--fontSize:26; line-height: 1.15;">Aguarde!</h3>
+    <div class="load">
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+    </div>
+</div>
+<div class="direct is-hidden">
+    <h2 class="text-white fusion-responsive-typography-calculated" data-fontsize="44" data-lineheight="46.2px"
+        style="--fontSize:44; line-height: 1.05;">Você já realizou seu cadastro!</h2>
+    <h3 class="text-white fusion-responsive-typography-calculated" data-fontsize="26" data-lineheight="29.9px"
+        style="--fontSize:26; line-height: 1.15;">Aguarde!</h3>
+    <div class="load">
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+    </div>
+</div>
+
+
+<script src="//unpkg.com/vanilla-masker@1.1.1/build/vanilla-masker.min.js"> </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.all.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/FlavioMoreir4/js@main/core.js"></script>
+<script>
+    const PopUp = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+    })
+    let
+        WhatsLink,
+        inputHandler = function (masks, max, event) {
+            var c = event.target,
+                v = c.value.replace(/\D/g, ''),
+                m = c.value.length > max ? 1 : 0;
+            VMasker(c).unMask();
+            VMasker(c).maskPattern(masks[m]);
+            c.value = VMasker.toPattern(v, masks[m]);
+        },
+        params = getSearchParameters(),
+        URLI = "https://api.ipmil.com.br/lead/add",
+
+        r = !!getParams("r") && getParams("r"),
+        validation = document.querySelectorAll(".needs-validation"),
+        form = document.forms.form,
+        f = form.elements.franquia.value,
+        regiao = form.elements.regiao,
+        nome_regiao = form.elements.nome_regiao,
+        nome = form.elements.nome,
+        whatsapp = form.elements.whatsapp,
+        grupo = form.elements.grupo,
+        email = form.elements.email,
+        utm_campaign = getParams("utm_campaign") ? form.utm_campaign.value = decodeURI(getParams("utm_campaign")) :
+        form.elements.utm_campaign.value,
+        utm_source = getParams("utm_source") ? form.utm_source.value = decodeURI(getParams("utm_source")) :
+        form.elements.utm_source.value,
+        utm_medium = getParams("utm_medium") ? form.utm_medium.value = decodeURI(getParams("utm_medium")) :
+        form.elements.utm_medium.value,
+        idCurso = form.elements.curso.value,
+        btnEnviar = form.elements.btnEnviar,
+        site = form.elements.site,
+        site_referrer = form.elements.site_referrer,
+        Mask = {
+            whats: ["99 99999-9999", "99 99999-9999"]
+        };
+
+
+    site.value = document.location.host + document.location.pathname
+    site_referrer.value = document.referrer
+
+
+    VMasker(whatsapp).maskPattern(Mask.whats[0])
+    whatsapp.addEventListener("input", inputHandler.bind(void 0, Mask.whats, 14), !1)
+
+
+    (newObj(getSearchParameters())).forEach(([k, v]) => {
+        form.querySelector(`input[name=${k}]`) ?
+            form.querySelector(`input[name=${k}]`).value = v : (
+                input = document.createElement("input"),
+                input.id = k,
+                input.name = k,
+                input.type = "hidden",
+                input.value = v,
+                form.appendChild(input)
+            )
+    });
+
+
+
+    btnEnviar.classList.add(f == "MIRIM" ? "btn-danger" : "btn-success")
+
+    function InsertDB() {
+        document.querySelector(".process").classList.remove("is-hidden"),
+            Insert(URLI, new FormData(form))
+            .then(e => e.json())
+            .then(function (e) {
+                fbq('track', 'Lead');
+                fbq('trackCustom', 'Lead ' + nome_regiao.value);
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    'event': 'Lead'
+                });
+
+                PopUp.fire({
+                    title: `Tudo certo`,
+                    icon: 'success',
+                    html: `<h4>Vamos enviar para o e-mail:</br><strong>${email.value}</strong></h4><h5>Verifique se não caiu na sua caixa de <strong>SPAN</strong>!</h5>`,
+                    showCloseButton: false,
+                    showCancelButton: false,
+                    showConfirmButton: true,
+                    focusConfirm: false,
+                })
+
+                console.log(e);
+                Loader(30)
+            })
+    }
+
+    function Direct() {
+        document.querySelector(".direct").classList.remove("is-hidden"),
+            PopUp.fire({
+                title: `Você já recebeu seu presente via e-mail!`,
+                icon: 'info',
+                html: '<h4>Não esqueça de olhar na caixa de <strong>SPAN</strong>!</h4>',
+                showCloseButton: false,
+                showCancelButton: false,
+                showConfirmButton: true,
+                focusConfirm: false
+            })
+        fbq('trackCustom', 'Leads Duplicados')
+    }
+
+    function Send() {
+        PopUp.fire({
+            title: 'Processando!',
+            html: '<h4>Aguarde!</h4>',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            onBeforeOpen: () => {
+                PopUp.showLoading()
+            }
+        })
+        form.classList.add("is-hidden")
+        if (whatsapp) {
+            Consult({
+                    URL: URLI,
+                    Data: {
+                        wpp: whatsapp.value,
+                        f: f.toLowerCase()
+                    }
+                })
+                .then(e => e.json())
+                .then(function (e) {
+                    0 === e.length ? InsertDB() : Direct()
+                })
+        } else {
+            Direct()
+        }
+        window.scrollTo(0, 0);
+    }
+
+    regiao.addEventListener('change', (e) => {
+        nome_regiao.value = capitalizeFirstLetter(regiao.selectedOptions[0].dataset.nome);
+    });
+
+    Array.prototype.slice.call(validation).forEach(function (o) {
+        o.addEventListener("submit", function (e) {
+            e.preventDefault(),
+                e.stopPropagation(),
+                o.checkValidity() && (
+                    console.log("EXEC"),
+                    Send()
+                ),
+                o.classList.add("was-validated")
+        }, !1)
+    });
+
+    fbq('track', 'ViewContent', {
+        content_name: utm_campaign,
+        content_category: `Landing Page - ${utm_source}`,
+        product_group: utm_source
+    });
+</script>

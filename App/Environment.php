@@ -3,6 +3,6 @@
 namespace App;
 
 class Environment {
-	const ENVIRONMENT = 'development';
-	//const ENVIRONMENT = 'production';
+	// const ENVIRONMENT = 'development';
+	const ENVIRONMENT = 'production';
 }

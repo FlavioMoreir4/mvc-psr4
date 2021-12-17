@@ -1,9 +1,18 @@
 {	
 	"type": "mvc",
+	"minimum-stability": "dev",
+	"prefer-stable": true,
 	"require": {
 		"twig/twig": "^3.3",
 		"phpmailer/phpmailer": "^6.5",
-		"minishlink/web-push": "^6.0"
+		"minishlink/web-push": "^6.0",
+		"nfephp-org/sped-nfse-ginfes": "dev-master",
+		"justinrainbow/json-schema": "^5.2",
+		"mautic/api-library": "^3.0",
+		"php-curl-class/php-curl-class": "^9.5",
+		"facebook/php-business-sdk": "5.0.5",
+		"facebook/graph-sdk" : "~5.0",
+    	"facebook/php-ads-sdk": "2.8.*"
 	},
 	"autoload":{
 		"psr-4":{

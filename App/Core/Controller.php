@@ -10,12 +10,7 @@ use App\Config;
 class Controller {
 
 	public function __construct() {
-		try {
-			$this->loader = new FilesystemLoader(Config::PATH_VIEWS_TWIG);
-			$this->twig = new Environment($loader);
-		} catch (Exception $e) {
-			echo "ERROR: ".$e->getMessage();
-		}
+
 	}
 
 	public function render(

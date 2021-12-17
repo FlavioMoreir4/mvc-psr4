@@ -50,7 +50,9 @@ class RouterBase {
                 }
 
             }
+
         }
+
 
         $controller = "\App\Controllers\\$controller";
         $definedController = new $controller();
