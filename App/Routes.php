@@ -10,4 +10,4 @@ $router = new Router();
 $router->get('/', 'HomeController@index');
 $router->post('/log', 'LeadController@log');
 
-$router->post('lead/add', 'LeadController@add');
+$router->post('/lead/add', 'LeadController@add');
